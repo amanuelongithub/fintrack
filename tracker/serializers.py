@@ -9,7 +9,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class TransactionSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
+    category = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all())
 
     class Meta:
         model = Transaction
