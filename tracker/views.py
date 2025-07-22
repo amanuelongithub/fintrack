@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from rest_framework.decorators import api_view
 from .models import Transaction
 from .serializers import TransactionSerializer
@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 
 @api_view(['GET', 'POST'])
-def get_transaction(request):
+def list_transactions(request):
     if request.method == 'GET':
         transaction = Transaction.objects.all()
         serializer = TransactionSerializer(transaction, many=True)
@@ -17,4 +17,20 @@ def get_transaction(request):
         serializer = TransactionSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response('Saved')
+        return Response('Transaction Saved!')
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def get_transaction(request, id):
+    transaction = get_object_or_404(Transaction, pk=id)
+    if request.method == 'GET':
+        serializer = TransactionSerializer(transaction)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = TransactionSerializer(transaction, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response("Transaction Updated!")
+    elif request.method == 'DELETE':
+        transaction.delete()
+        return Response("Transaction Deleted!")

@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('transaction/', views.get_transaction),
+    path('transaction/', views.list_transactions),
+    path('transaction/<int:id>/', views.get_transaction),
 ]
 
 if settings.DEBUG:
