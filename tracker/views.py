@@ -5,6 +5,8 @@ from .serializers import TransactionSerializer
 from rest_framework.response import Response
 
 # Create your views here.
+
+
 @api_view(['GET', 'POST'])
 def list_transactions(request):
     if request.method == 'GET':
@@ -16,6 +18,7 @@ def list_transactions(request):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response('Transaction Saved!')
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def get_transaction(request, id):
@@ -32,11 +35,9 @@ def get_transaction(request, id):
         transaction.delete()
         return Response("Transaction Deleted!")
 
+
 @api_view(['GET'])
 def get_summary(request):
-    transaction = get_object_or_404(Transaction)
-    if request.method == 'GET':
-        serializer = TransactionSerializer(transaction)
-        return Response(serializer.data)
- 
- 
+    transaction = Transaction.objects.filter(category__id=2)
+    serializer = TransactionSerializer(transaction, many=True)
+    return Response(serializer.data)

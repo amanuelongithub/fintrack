@@ -19,7 +19,7 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2) # 📝
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True) # 📝
     detail = models.CharField(max_length=256)
-    type = models.CharField(max_length=1, choices=TRANSACTION_TYPE_CHOICES)
+    transaction_type = models.CharField(max_length=1, choices=TRANSACTION_TYPE_CHOICES)
     date = models.DateField(auto_now_add=True) # 📝
 
     class Meta:

@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('transaction/', views.list_transactions),
     path('transaction/<int:id>/', views.get_transaction),
-    path('summary/', views.get_transaction),
+    path('summary/', views.get_summary),
 ]
 
 if settings.DEBUG:
