@@ -1,0 +1,71 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.VENV/
+
+# Django SQLite database
+*.sqlite3
+*.db
+
+# Django migration files (optional)
+# Uncomment if you want to ignore migration history
+# **/migrations/*.py
+# **/migrations/*.pyc
+# But it's usually better to keep them in Git!
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Python tooling
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.bak
+*.tmp
+
+# Testing
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.cache
+nosetests.xml
+test-results.xml
+junit.xml
+
+# pip and env
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environments / keys / secrets
+.env
+*.env
+.env.*
+
+# IDEs and JetBrains
+.idea/
+
+# Local server output
+staticfiles/
+media/
+
+# Compiled front-end files (optional, if using Webpack or similar)
+node_modules/
+dist/
+build/

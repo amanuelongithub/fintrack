@@ -35,7 +35,7 @@ def get_transaction(request, id):
         transaction.delete()
         return Response("Transaction Deleted!")
 
-@api_view(['GET'])
+@api_view(['GET']) 
 def get_summary(request):
     transaction = Transaction.objects.filter(category__id=2)
     serializer = TransactionSerializer(transaction, many=True)
